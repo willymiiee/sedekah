@@ -167,7 +167,70 @@
         });
 
         $('#btnSubmit').click(function() {
+            sedekah = $('#sedekah').val();
 
+            if (sedekah == 'custom') {
+                sedekah = $('#inputCustomSedekah').val();
+
+                if (sedekah == null || sedekah == '') {
+                    $('.nav-pills > .active').prev('li').find('a').trigger('click');
+
+                    swal({
+                        title: "Error!",
+                        text: "Silahkan masukkan jumlah sedekah anda!",
+                        type: "error",
+                        confirmButtonText: "Ok"
+                    });
+                } else {
+                    if (sedekah < 2000000) {
+                        $('.nav-pills > .active').prev('li').find('a').trigger('click');
+
+                        swal({
+                            title: "Error!",
+                            text: "Jumlah sedekah minimal 2 juta!",
+                            type: "error",
+                            confirmButtonText: "Ok"
+                        });
+                    }
+                }
+            }
+
+            if (sedekah == 0 || sedekah == null) {
+                $('.nav-pills > .active').prev('li').find('a').trigger('click');
+
+                swal({
+                    title: "Error!",
+                    text: "Silahkan masukkan jumlah sedekah anda!",
+                    type: "error",
+                    confirmButtonText: "Ok"
+                });
+            } else {
+                var send = false;
+                const noHP = $('#noHP').val();
+                const nama = $('#nama').val();
+                const email = $('#email').val();
+                const pay = $('input:radio:checked').val();
+
+                if (noHP == '' || nama == '' || email == '' || !pay) {
+                    swal({
+                        title: "Error!",
+                        text: "Silahkan lengkapi data anda!",
+                        type: "error",
+                        confirmButtonText: "Ok"
+                    });
+                } else {
+                    send = true;
+                }
+
+                if (send) {
+                    swal({
+                        title: "Terima kasih!",
+                        text: "Sedekah anda telah tercatat!",
+                        type: "success",
+                        confirmButtonText: "Ok"
+                    });
+                }
+            }
         });
     });
 </script>
