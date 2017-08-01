@@ -73,7 +73,14 @@
         </nav>
 
         @yield('content')
+
     </div>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="text-muted">&copy; {{ date('Y') }} Willy Nugraha.</p>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
